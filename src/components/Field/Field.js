@@ -245,7 +245,7 @@ export const Field = ({ onChange, onBlur, onFocus, ...props }) => {
                   {getDescription()}
                   {getError()}
                </Col>
-               <Col grow>{getField()}</Col>
+               <Col span={isNaN(props.inline) ? 8 : 12 - props.inline}>{getField()}</Col>
             </Row>
          </StyledField>
       );
