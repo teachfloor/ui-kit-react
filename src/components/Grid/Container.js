@@ -6,6 +6,7 @@ const StyledContainer = styled.div`
    box-sizing: border-box;
    display: block;
    width: 100%;
+   padding: 0 10px; // should be dynamic based on the gutter size
    max-width: ${(props) =>
       typeof props.maxWidth == 'number' ? props.maxWidth + 'px' : props.maxWidth};
 
