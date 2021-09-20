@@ -5,6 +5,16 @@ import { color, typography } from '../../shared/styles';
 import { glow } from '../../shared/animation';
 import { Icon } from '../Icon';
 
+const convertStringToHsl = (str, saturation = 60, lightness = 60) => {
+   let hash = 0;
+   for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+   }
+
+   let h = hash % 360;
+   return 'hsl(' + h + ', ' + saturation + '%, ' + lightness + '%)';
+}
+
 export const sizes = {
    large: 64,
    medium: 40,
@@ -79,6 +89,12 @@ const Initial = styled.div`
          font-size: ${typography.size.s3}px;
          line-height: ${sizes.large}px;
       `}
+
+   ${(props) =>
+      props.name &&
+      css`
+         background-color: ${convertStringToHsl(props.name)};
+      `}
 `;
 
 /**
@@ -93,7 +109,7 @@ export const Avatar = ({ isLoading, name, src, size, ...props }) => {
       avatarFigure = <img src={src} alt={name} />;
    } else {
       avatarFigure = (
-         <Initial size={size} aria-hidden="true">
+         <Initial size={size} aria-hidden="true" name={name}>
             {name.substring(0, 1)}
          </Initial>
       );
