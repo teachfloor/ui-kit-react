@@ -1,6 +1,6 @@
 import * as ioniconsOutline from '@styled-icons/ionicons-outline'
 import * as ioniconsSolid from '@styled-icons/ionicons-solid'
-import * as ioniconsMaterial from '@styled-icons/material'
+// import * as ioniconsMaterial from '@styled-icons/material'
 import * as ioniconsMaterialOutlined from '@styled-icons/material-outlined'
 
 const customIcons = {
@@ -320,9 +320,9 @@ const customIcons = {
 
 // Icon paths
 export const icons = {
-  ...ioniconsMaterialOutlined,
-  ...ioniconsMaterial,
   ...ioniconsSolid,
   ...ioniconsOutline,
+  // ...ioniconsMaterial,
+  ...ioniconsMaterialOutlined,
   ...customIcons,
 };
