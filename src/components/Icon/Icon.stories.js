@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'styled-components'
-import { Box } from '../Box'
 import { Icon } from './Icon'
 import { icons } from '../../shared/icons';
 
@@ -14,7 +13,7 @@ const Item = styled.li`
 	display: inline-flex;
 	flex-direction: row;
 	align-items: center;
-	flex: 0 1 20%;
+	flex: 0 1 25%;
 	min-width: 120px;
 	padding: 0px 7.5px 20px;
 	box-sizing: border-box;

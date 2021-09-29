@@ -1,5 +1,6 @@
 import * as ioniconsOutline from '@styled-icons/ionicons-outline'
 import * as ioniconsSolid from '@styled-icons/ionicons-solid'
+import * as ioniconsMaterial from '@styled-icons/material'
 
 const customIcons = {
   mobile:
@@ -318,6 +319,7 @@ const customIcons = {
 
 // Icon paths
 export const icons = {
+  ...ioniconsMaterial,
   ...ioniconsSolid,
   ...ioniconsOutline,
   ...customIcons,
