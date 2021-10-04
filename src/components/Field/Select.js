@@ -113,7 +113,8 @@ const StyledItemButton = styled.button`
 
 const StyledWrapper = styled.div`
    position: relative;
-
+   background-color: ${color.lighter};
+   
    ${(props) =>
       props.focus &&
       css`
