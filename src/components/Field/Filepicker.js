@@ -142,7 +142,7 @@ const StyledDropzone = styled.div`
    height: 20vw;
    max-height: 260px;
    border-radius: ${spacing.borderRadius.default}px;
-   background-color: ${color.light};
+   background-color: ${color.lighter};
    outline: none;
    padding: 10px 20px;
    overflow: auto;
@@ -446,28 +446,22 @@ export const Filepicker = ({
    const renderFilePreviews = () => {
       return (
          <StyledFilePreviews multiple={multiple}>
-            {
-               !completedFiles.length
-               && !acceptedFiles.length
-               && (multiple ? value.length : value)
-               ? (
-                  multiple
-                  ? (
-                     value.map((image, key) => (
-                        <FilePreview
-                           key={`default_${key}`}
-                           image={image}
-                           completed
-                           onDelete={() => setValue(value.filter((val, index) => index != key))}
-                        />
-                     ))
-                  )
-                  : (
-                     <FilePreview image={value} completed onDelete={() => setValue(null)} />
-                  )
+            {!completedFiles.length &&
+            !acceptedFiles.length &&
+            (multiple ? value.length : value) ? (
+               multiple ? (
+                  value.map((image, key) => (
+                     <FilePreview
+                        key={`default_${key}`}
+                        image={image}
+                        completed
+                        onDelete={() => setValue(value.filter((val, index) => index != key))}
+                     />
+                  ))
+               ) : (
+                  <FilePreview image={value} completed onDelete={() => setValue(null)} />
                )
-               : null
-            }
+            ) : null}
 
             {completedFiles.map((file, key) => (
                <FilePreview
@@ -529,9 +523,7 @@ export const Filepicker = ({
    return (
       <StyledFilePicker>
          {renderFilePreviews()}
-         {acceptedFiles.length || multiple || value
-            ? null
-            : renderDropzone()}
+         {acceptedFiles.length || multiple || value ? null : renderDropzone()}
       </StyledFilePicker>
    );
 };

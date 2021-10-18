@@ -63,6 +63,7 @@ const StyledCheckbox = styled.div`
    width: 20px;
    height: 20px;
    border-radius: ${spacing.borderRadius.xsmall}px;
+   background-color: ${color.lighter};
    transition: all 150ms;
    padding: 2px;
    line-height: 1;

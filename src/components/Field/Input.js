@@ -14,6 +14,7 @@ export const StyledBase = styled.input`
    line-height: ${typography.size.m2 * 2}px;
    box-shadow: inset 0 0 0 1px ${color.medium};
    border-radius: ${spacing.borderRadius.default}px;
+   background-color: ${color.lighter};
 
    &::-webkit-input-placeholder {
       color: ${color.mediumdark};
