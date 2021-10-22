@@ -107,6 +107,23 @@ export const Button = ({ plain, children, label, loadingText, iconLeft, iconRigh
    const theme = useTheme();
    const propsWithTheme = { theme, ...props };
 
+   const getClassNames = () => {
+      const classes = [];
+
+      classes.push(`use-${props.use}`);
+      classes.push(`size-${props.size}`);
+
+      if (plain) classes.push('plain');
+      if (props.isLoading) classes.push('is-loading');
+      if (props.stroked) classes.push('stroked');
+      if (props.fullWidth) classes.push('fullwidth');
+      if (props.icon) classes.push('icon');
+      if (iconLeft) classes.push('icon-left');
+      if (iconRight) classes.push('icon-right');
+
+      return classes.join(' ');
+   };
+
    const getIconLeft = () =>
       iconLeft ? (
          <ButtonIcon>
@@ -139,7 +156,7 @@ export const Button = ({ plain, children, label, loadingText, iconLeft, iconRigh
    }
 
    return (
-      <StyledButton {...propsWithTheme}>
+      <StyledButton {...propsWithTheme} className={getClassNames()}>
          {getIconLeft()}
          <ButtonLabel>{getContent()}</ButtonLabel>
          {getIconRight()}
