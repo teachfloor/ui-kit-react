@@ -13,7 +13,7 @@ const convertStringToHsl = (str, saturation = 60, lightness = 60) => {
 
    let h = hash % 360;
    return 'hsl(' + h + ', ' + saturation + '%, ' + lightness + '%)';
-}
+};
 
 export const sizes = {
    large: 64,
@@ -38,6 +38,14 @@ const Image = styled.div`
       !props.src &&
       css`
          background: ${!props.isLoading && color.secondary};
+      `}
+
+   ${(props) =>
+      props.src &&
+      css`
+         background-image: url(${props.src});
+         background-size: cover;
+         background-position: center;
       `}
 
    ${(props) =>
@@ -106,7 +114,7 @@ export const Avatar = ({ isLoading, name, src, size, ...props }) => {
    if (isLoading) {
       avatarFigure = <Icon icon={'useralt'} />;
    } else if (src) {
-      avatarFigure = <img src={src} alt={name} />;
+      avatarFigure = null;
    } else {
       avatarFigure = (
          <Initial size={size} aria-hidden="true" name={name}>
