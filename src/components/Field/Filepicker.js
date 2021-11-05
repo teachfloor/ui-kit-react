@@ -63,6 +63,10 @@ const isFileImage = (file) => {
    return file && file.type.split('/')[0] === 'image';
 };
 
+const isUrlImage = (url) => {
+   return url.match(/\.(jpeg|jpg|gif|png|svg)$/) != null;
+};
+
 const StyledFilePreviewImage = styled.div`
    position: relative;
    width: 80px;
@@ -79,10 +83,11 @@ const StyledFilePreviewImage = styled.div`
          background-image: url(${URL.createObjectURL(props.file)});
       `}
 
-   ${(props) =>
-      props.image &&
+   ${({ url }) =>
+      url &&
+      isUrlImage(url) &&
       css`
-         background-image: url(${props.image});
+         background-image: url(${url});
       `}
 `;
 
@@ -254,8 +259,12 @@ const StyledFilePreviews = styled.div`
 
 const StyledFilePicker = styled.div``;
 
-const FilePreview = ({ file, onDelete, image, uploadPercent, ...props }) => {
+const FilePreview = ({ file, fileUrl, onDelete, uploadPercent, ...props }) => {
    const getFileLabel = () => {
+      if (fileUrl && !isUrlImage(fileUrl)) {
+         return fileUrl.split('.').pop();
+      }
+
       if (!file) {
          return null;
       }
@@ -293,7 +302,7 @@ const FilePreview = ({ file, onDelete, image, uploadPercent, ...props }) => {
 
    return (
       <StyledFilePreview {...props}>
-         <StyledFilePreviewImage file={file} image={image} />
+         <StyledFilePreviewImage file={file} url={fileUrl} />
          <StyledFilePreviewLabel>{getFileLabel()}</StyledFilePreviewLabel>
          {renderUploadProgress()}
          {renderDeleteButton()}
@@ -453,13 +462,13 @@ export const Filepicker = ({
                   value.map((image, key) => (
                      <FilePreview
                         key={`default_${key}`}
-                        image={image}
+                        fileUrl={image}
                         completed
                         onDelete={() => setValue(value.filter((val, index) => index != key))}
                      />
                   ))
                ) : (
-                  <FilePreview image={value} completed onDelete={() => setValue(null)} />
+                  <FilePreview fileUrl={value} completed onDelete={() => setValue(null)} />
                )
             ) : null}
 

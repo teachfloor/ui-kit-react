@@ -211,7 +211,7 @@ Button.propTypes = {
    /**
     * Sets the button type attribute
     */
-   type: PropTypes.oneOf([undefined, 'submit', 'reset']),
+   type: PropTypes.oneOf([undefined, 'button', 'submit', 'reset']),
 };
 
 Button.defaultProps = {
