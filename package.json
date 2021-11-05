@@ -1,6 +1,6 @@
 {
   "name": "@wofh/ui-kit-react",
-  "version": "0.37.1",
+  "version": "0.37.2",
   "description": "WOFH UI Kit is a reusable component library that helps WOFH contributors build UIs faster. The goal is to make building durable UIs more productive and satisfying.",
   "main": "dist/index.js",
   "repository": {
