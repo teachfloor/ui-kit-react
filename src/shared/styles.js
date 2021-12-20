@@ -23,7 +23,7 @@ export const color = {
 
 export const typography = {
    type: {
-      primary: '"Poppins", sans-serif',
+      primary: '"Roboto", sans-serif',
       code: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace',
    },
    weight: {
@@ -63,10 +63,10 @@ export const spacing = {
       large: 30,
    },
    borderRadius: {
-      xsmall: 4,
-      small: 6,
-      default: 10,
-      large: 14,
+      xsmall: 2,
+      small: 4,
+      default: 6,
+      large: 8,
    },
 };
 
@@ -77,6 +77,6 @@ export const responsive = {
       sm: 576,
       md: 768,
       lg: 992,
-      xl: 1200
-   }
+      xl: 1200,
+   },
 };
