@@ -41,7 +41,7 @@ const BadgeLabel = styled.span`
 export const StyledBadge = styled.span`
    display: inline-block;
    line-height: 1;
-   border-radius: ${(props) => props.theme.spacing.borderRadius.xsmall}px;
+   border-radius: ${(props) => props.theme.spacing.borderRadius.small}px;
    background-color: ${(props) => getColor(props)};
    color: #fff;
 
@@ -53,9 +53,11 @@ export const StyledBadge = styled.span`
       height: 14px;
    }
 
-   ${(props) => props.onClick && css`
-      cursor: pointer;
-   `}
+   ${(props) =>
+      props.onClick &&
+      css`
+         cursor: pointer;
+      `}
 
    ${BadgeIcon} {
       &:first-child {
@@ -67,14 +69,18 @@ export const StyledBadge = styled.span`
       }
    }
 
-   ${(props) => props.semiTransparent && css`
-      background-color: ${hex2rgba(getColor(props), 0.3)};
-      color: ${hexDarken(getColor(props), 0.6)};
-   `}
+   ${(props) =>
+      props.semiTransparent &&
+      css`
+         background-color: ${hex2rgba(getColor(props), 0.3)};
+         color: ${hexDarken(getColor(props), 0.6)};
+      `}
 
-   ${(props) => props.spaceAfter && css`
-      margin-bottom: ${props.spaceAfter}px;
-   `}
+   ${(props) =>
+      props.spaceAfter &&
+      css`
+         margin-bottom: ${props.spaceAfter}px;
+      `}
 `;
 
 export const Badge = ({ children, label, iconLeft, iconRight, ...props }) => {
@@ -112,8 +118,8 @@ Badge.StyledBadge = StyledBadge;
 
 Badge.propTypes = {
    /**
-   * Label to display on the badge
-   */
+    * Label to display on the badge
+    */
    label: PropTypes.node,
    size: PropTypes.oneOf(Object.keys(sizes)),
    use: PropTypes.oneOf(Object.keys(color)),
