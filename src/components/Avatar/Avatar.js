@@ -117,8 +117,8 @@ export const Avatar = ({ isLoading, name, src, size, ...props }) => {
       avatarFigure = null;
    } else {
       avatarFigure = (
-         <Initial size={size} aria-hidden="true" name={name}>
-            {name.substring(0, 1)}
+         <Initial size={size} aria-hidden="true" name={name || ''}>
+            {(name || '').substring(0, 1)}
          </Initial>
       );
    }
