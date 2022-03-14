@@ -226,5 +226,5 @@ Button.defaultProps = {
    iconLeft: undefined,
    iconRight: undefined,
    icon: undefined,
-   type: undefined,
+   type: 'button',
 };

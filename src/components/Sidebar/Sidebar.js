@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { Icon } from '../Icon';
@@ -241,19 +241,37 @@ export const Sidebar = ({ items, activePath, footer, children, header, collapsed
       return items.map((item, index) => getItem(item, index, parentItem));
    };
 
+   const renderHeader = useCallback(
+      () => header && <StyledSidebarHeader>{header}</StyledSidebarHeader>,
+      [header]
+   );
+
+   const renderChidren = useCallback(
+      () => (
+         <StyledSidebarChildren>
+            {Array.isArray(items) ? getItems(items) : null}
+            {children}
+         </StyledSidebarChildren>
+      ),
+      [items, children]
+   );
+
+   const renderFooter = useCallback(
+      () =>
+         footer && (
+            <StyledSidebarFooter>
+               {Array.isArray(footer) ? getItems(footer) : footer}
+            </StyledSidebarFooter>
+         ),
+      [footer]
+   );
+
    return (
       <StyledSidebarWrapper>
          <StyledSidebar {...propsWithTheme} collapsed={collapsed}>
-            {header && <StyledSidebarHeader>{header}</StyledSidebarHeader>}
-            <StyledSidebarChildren>
-               {Array.isArray(items) ? getItems(items) : null}
-               {children}
-            </StyledSidebarChildren>
-            {footer && (
-               <StyledSidebarFooter>
-                  {Array.isArray(footer) ? getItems(footer) : footer}
-               </StyledSidebarFooter>
-            )}
+            {renderHeader()}
+            {renderChidren()}
+            {renderFooter()}
          </StyledSidebar>
       </StyledSidebarWrapper>
    );
