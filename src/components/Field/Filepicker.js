@@ -300,6 +300,10 @@ const FilePreview = ({ file, fileUrl, onDelete, uploadPercent, ...props }) => {
       return <ProgressRing radius={40} stroke={4} progress={uploadPercent} />;
    };
 
+   useEffect(() => {
+      console.log('uploadPercent', uploadPercent);
+   }, [uploadPercent]);
+
    return (
       <StyledFilePreview {...props}>
          <StyledFilePreviewImage file={file} url={fileUrl} />
