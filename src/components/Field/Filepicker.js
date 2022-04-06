@@ -11,6 +11,15 @@ const StyledProgressRing = styled.div`
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
+
+   span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: ${typography.weight.medium}:
+      fotn-size: ${typography.size.s2};
+   }
 `;
 class ProgressRing extends React.Component {
    constructor(props) {
@@ -31,8 +40,8 @@ class ProgressRing extends React.Component {
          <StyledProgressRing>
             <svg height={radius * 2} width={radius * 2}>
                <circle
-                  stroke={'white'}
-                  fill={'transparent'}
+                  stroke={color.darkest}
+                  fill={color.lighter}
                   strokeWidth={stroke}
                   strokeDasharray={this.circumference + ' ' + this.circumference}
                   style={{ strokeDashoffset }}
@@ -41,6 +50,7 @@ class ProgressRing extends React.Component {
                   cy={radius}
                />
             </svg>
+            <span>{progress}%</span>
          </StyledProgressRing>
       );
    }
@@ -300,10 +310,6 @@ const FilePreview = ({ file, fileUrl, onDelete, uploadPercent, ...props }) => {
       return <ProgressRing radius={40} stroke={4} progress={uploadPercent} />;
    };
 
-   useEffect(() => {
-      console.log('uploadPercent', uploadPercent);
-   }, [uploadPercent]);
-
    return (
       <StyledFilePreview {...props}>
          <StyledFilePreviewImage file={file} url={fileUrl} />
@@ -344,7 +350,18 @@ export const Filepicker = ({
    const [uploadPercent, setUploadPercent] = useState(false);
 
    useEffect(() => {
-      console.log('onUploadProgress', uploadPercent);
+      switch (uploadPercent) {
+         case false:
+            setTimeout(() => setUploadPercent(0), 500);
+            break;
+
+         case 100:
+            setTimeout(() => setUploadPercent(false), 500);
+            break;
+
+         default:
+            setTimeout(() => setUploadPercent(uploadPercent + 1), 500);
+      }
    }, [uploadPercent]);
 
    useEffect(() => {
