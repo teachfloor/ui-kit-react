@@ -340,6 +340,10 @@ export const Filepicker = ({
    const [uploadPercent, setUploadPercent] = useState(false);
 
    useEffect(() => {
+      console.log('onUploadProgress', uploadPercent);
+   }, [uploadPercent]);
+
+   useEffect(() => {
       if (acceptedFiles.length > 0) {
          handleUpload(acceptedFiles[0]);
       }
