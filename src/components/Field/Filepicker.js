@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../Icon';
 import styled, { css } from 'styled-components';
@@ -302,13 +302,13 @@ const FilePreview = ({ file, fileUrl, onDelete, uploadPercent, ...props }) => {
       );
    };
 
-   const renderUploadProgress = () => {
+   const renderUploadProgress = useCallback(() => {
       if (uploadPercent === false) {
          return null;
       }
 
       return <ProgressRing radius={40} stroke={4} progress={uploadPercent} />;
-   };
+   }, [uploadPercent]);
 
    return (
       <StyledFilePreview {...props}>
@@ -349,20 +349,20 @@ export const Filepicker = ({
    // const [uploadErrored, setUploadErrored] = useState(false);
    const [uploadPercent, setUploadPercent] = useState(false);
 
-   useEffect(() => {
-      switch (uploadPercent) {
-         case false:
-            setTimeout(() => setUploadPercent(0), 500);
-            break;
+   // useEffect(() => {
+   //    switch (uploadPercent) {
+   //       case false:
+   //          setTimeout(() => setUploadPercent(0), 500);
+   //          break;
 
-         case 100:
-            setTimeout(() => setUploadPercent(false), 500);
-            break;
+   //       case 100:
+   //          setTimeout(() => setUploadPercent(false), 500);
+   //          break;
 
-         default:
-            setTimeout(() => setUploadPercent(uploadPercent + 1), 500);
-      }
-   }, [uploadPercent]);
+   //       default:
+   //          setTimeout(() => setUploadPercent(uploadPercent + 1), 500);
+   //    }
+   // }, [uploadPercent]);
 
    useEffect(() => {
       if (acceptedFiles.length > 0) {
