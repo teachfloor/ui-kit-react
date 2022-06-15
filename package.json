@@ -21,8 +21,6 @@
   "homepage": "https://wofh.github.io/ui-kit-react",
   "dependencies": {
     "@styled-icons/ionicons-outline": "^10.24.0",
-    "@styled-icons/ionicons-solid": "^10.24.0",
-    "@styled-icons/material": "^10.34.0",
     "@styled-icons/material-outlined": "^10.34.0",
     "moment": "^2.29.1",
     "prop-types": "^15.5.4",
